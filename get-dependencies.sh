@@ -30,6 +30,8 @@ git clone https://github.com/storytold/filmcraft.git ./filmcraft && (
 	git checkout "$TAG"
 	echo "${TAG#v}" > ~/version
 
+	export CARGO_PROFILE_RELEASE_LTO=fat
+	export CARGO_PROFILE_RELEASE_PANIC=abort
 	cargo build --locked --release
 
 	cp -v ./target/release/filmcraft ./target/release/filmcraft-cli /usr/bin
